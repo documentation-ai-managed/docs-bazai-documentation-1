@@ -1,0 +1,209 @@
+---
+title: Features
+description: Explore the comprehensive features available in Bazai Documentation
+---
+
+## Core Features Overview
+
+Bazai Documentation provides a rich set of features designed to make documentation creation and management effortless. From advanced editing capabilities to powerful organization tools, our platform supports documentation needs of all sizes and complexities.
+
+<Columns cols={2}>
+  <Card title="Rich Text Editor" icon="file-text" href="#editor">
+    Create engaging content with our powerful editor supporting markdown, rich text, and multimedia.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#versioning">
+    Track changes and maintain version history with built-in version control.
+  </Card>
+  <Card title="Search & Discovery" icon="search" href="#search">
+    Find content quickly with advanced search and filtering capabilities.
+  </Card>
+  <Card title="Collaboration Tools" icon="users" href="#collaboration">
+    Work together with real-time editing, comments, and approval workflows.
+  </Card>
+</Columns>
+
+## Rich Text Editor
+
+Our advanced editor provides multiple ways to create and format your documentation content. Whether you prefer markdown syntax or visual editing, you can produce professional-looking documentation with ease.
+
+<Tabs>
+  <Tab title="Markdown Mode" icon="code">
+    Write in markdown for speed and control. Our editor supports all standard markdown features plus extensions for tables, code blocks, and more.
+
+    <CodeGroup tabs="Basic,Advanced">
+      ```markdown
+# Getting Started
+
+This guide will help you get started with Bazai.
+
+## Installation
+
+Run the following command to install:
+
+```
+npm install bazai-docs
+```
+
+## Configuration
+
+Create a config file:
+
+```json
+{
+  "title": "My Docs",
+  "theme": "default"
+}
+```
+      ```
+      ```markdown
+# Advanced Features
+
+## Custom Components
+
+You can embed custom components using JSX:
+
+```jsx
+<Callout kind="info">
+  This is an informational callout.
+</Callout>
+```
+
+## Tables
+
+| Feature | Status |
+|---------|--------|
+| Markdown | ✅ |
+| Tables | ✅ |
+| Code Blocks | ✅ |
+      ```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Visual Mode" icon="eye">
+    Use our WYSIWYG editor for a more visual editing experience. Format text, insert media, and preview changes in real-time.
+
+    <Callout kind="tip">
+      Switch between markdown and visual modes at any time without losing your content.
+    </Callout>
+  </Tab>
+</Tabs>
+
+## Organization & Structure
+
+Keep your documentation organized with powerful structuring tools. Create hierarchical folders, apply tags, and use custom metadata to categorize and find content.
+
+<Steps>
+  <Step title="Create Folders" icon="folder">
+    Organize content into logical folders and subfolders. Drag and drop to rearrange the structure.
+  </Step>
+  <Step title="Apply Tags" icon="tag">
+    Add tags to documents for easy categorization and filtering. Create custom tag hierarchies.
+  </Step>
+  <Step title="Set Metadata" icon="settings">
+    Add custom metadata fields like author, status, and priority to track document properties.
+  </Step>
+  <Step title="Configure Permissions" icon="lock">
+    Control who can view and edit documents with granular permission settings.
+  </Step>
+</Steps>
+
+<Expandable title="Folder Organization Example" default-open="false">
+  ```
+  documentation/
+  ├── user-guides/
+  │   ├── getting-started/
+  │   │   ├── installation.md
+  │   │   └── first-steps.md
+  │   └── advanced-features/
+  │       ├── integrations.md
+  │       └── customization.md
+  ├── api-reference/
+  │   ├── authentication.md
+  │   └── endpoints.md
+  └── troubleshooting/
+      ├── common-issues.md
+      └── faq.md
+  ```
+</Expandable>
+
+## Search & Discovery
+
+Find content quickly with our advanced search and filtering capabilities. Use natural language queries, filter by tags, and save search templates.
+
+<Callout kind="info">
+  Our search engine indexes content in real-time and supports fuzzy matching for better discovery.
+</Callout>
+
+## Collaboration Features
+
+Work together effectively with team members using our collaboration tools. Share documents, leave comments, and track changes.
+
+<ExpandableGroup>
+  <Expandable title="Real-time Editing" default-open="true">
+    See live changes from other team members as they edit documents. Conflicts are resolved automatically.
+  </Expandable>
+  <Expandable title="Comments & Suggestions" default-open="false">
+    Leave comments on specific sections and suggest edits directly in the document.
+  </Expandable>
+  <Expandable title="Approval Workflows" default-open="false">
+    Set up review processes with approval gates before content is published.
+  </Expandable>
+</ExpandableGroup>
+
+## Integration Capabilities
+
+Connect Bazai with your existing tools and workflows. Import content from other platforms and automate documentation updates.
+
+<Tabs>
+  <Tab title="Git Integration" icon="git-branch">
+    Connect to Git repositories for version control and automated deployments.
+
+    <CodeGroup tabs="GitHub,Bitbucket">
+      ```bash
+git clone https://github.com/your-org/docs.git
+cd docs
+npm install
+npm run build
+      ```
+      ```bash
+git clone https://bitbucket.org/your-org/docs.git
+cd docs
+npm install
+npm run build
+      ```
+    </CodeGroup>
+  </Tab>
+  <Tab title="API Access" icon="code">
+    Use our REST API to programmatically manage documentation content.
+
+    <Request tabs="Create Document,Update Document" show-lines="true">
+      ```javascript
+const response = await fetch('/api/docs', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    title: 'New Document',
+    content: '# Hello World'
+  })
+});
+      ```
+      ```javascript
+const response = await fetch('/api/docs/123', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    title: 'Updated Document',
+    content: '# Updated Content'
+  })
+});
+      ```
+    </Request>
+  </Tab>
+</Tabs>
+
+## Analytics & Insights
+
+Track how your documentation is being used and gather insights to improve content quality.
+
+<Callout kind="tip">
+  Monitor page views, search queries, and user engagement to understand what content is most valuable.
+</Callout>

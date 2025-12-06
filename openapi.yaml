@@ -1,0 +1,164 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Bazai Documentation API
+  license:
+    name: MIT
+servers:
+  - url: https://api.bazai.com/v1
+paths:
+  /docs:
+    get:
+      summary: List all documents in the system
+      operationId: listDocs
+      parameters:
+        - name: limit
+          in: query
+          description: How many documents to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of documents
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new document in the documentation system
+      operationId: createDoc
+      responses:
+        201:
+          description: Document created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /docs/{docId}:
+    get:
+      summary: Retrieve details for a specific document by its unique identifier
+      operationId: getDocById
+      parameters:
+        - name: docId
+          in: path
+          required: true
+          description: The unique identifier of the document to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Document details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update an existing document with new content or metadata
+      operationId: updateDoc
+      responses:
+        200:
+          description: Document updated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /folders:
+    get:
+      summary: Retrieve a list of all folders in the documentation structure
+      operationId: listFolders
+      responses:
+        200:
+          description: List of folders returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Folders'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new folder in the documentation hierarchy
+      operationId: createFolder
+      responses:
+        201:
+          description: Folder created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Doc:
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        folder_id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+    Docs:
+      type: array
+      items:
+        $ref: '#/components/schemas/Doc'
+    Folder:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parent_id:
+          type: string
+    Folders:
+      type: array
+      items:
+        $ref: '#/components/schemas/Folder'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
